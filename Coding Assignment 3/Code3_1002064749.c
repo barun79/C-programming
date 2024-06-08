@@ -8,9 +8,9 @@ void print_numbers(int numbers[5][5]);
 int pick_number(int *count, int picked_number[75]);
 // void check_duplicate_pick(int picked_number[75]);
 bool number_exist(int numbers[5][5], int pick);
-bool check_row(int numbers[5][5]);
-bool check_column(int numbers[5][5]);
-bool check_diagonal(int numbers[5][5]);
+int check_row(int numbers[5][5]);
+int check_column(int numbers[5][5]);
+int check_diagonal(int numbers[5][5]);
 
 int main(){
     int numbers [5][5];
@@ -26,7 +26,13 @@ int main(){
         if (exist){
             print_numbers(numbers);
         }
-        bingo = check_row(numbers) || check_column(numbers) || check_diagonal(numbers);
+        int row = check_row(numbers);
+        int column = check_column(numbers);
+        int diagonal = check_diagonal(numbers);
+        if (row + column + diagonal > 4){
+            bingo = true;
+            printf("You won.\nRows %d Columns %d Diagonals %d \n", row, column, diagonal);
+        }
     }
 
     return 0;
@@ -103,8 +109,8 @@ bool number_exist(int numbers[5][5], int pick){
     return found;
 }
 
-bool check_row (int numbers[5][5]){
-    bool bingo = false;
+int check_row (int numbers[5][5]){
+    int row = 0;
     for(int i = 0 ; i < 5 ; i++){
         int count = 0;
         for (int j = 0 ; j < 5; j++){
@@ -113,16 +119,14 @@ bool check_row (int numbers[5][5]){
             }
         }
         if (count == 5){
-            bingo = true;
-            printf("You won by row \n");
-            break;
+            row++;
         }
     }
-    return bingo;
+    return row;
 }
 
-bool check_column(int numbers[5][5]){
-    bool bingo = false;
+int check_column(int numbers[5][5]){
+    int column = 0;
     for(int i = 0; i < 5; i++){
         int count = 0;
         for(int j = 0; j < 5 ; j++){
@@ -131,16 +135,14 @@ bool check_column(int numbers[5][5]){
             }
         }
         if(count == 5){
-            bingo = true;
-            printf("You won by column");
-            break;
+            column++;
         }
     }
-    return bingo;
+    return column;
 }
 
-bool check_diagonal(int numbers[5][5]){
-    bool bingo = false;
+int check_diagonal(int numbers[5][5]){
+    int diagonal = 0;
     int mcount = 0;
     int acount = 0;
     for(int i = 0; i < 5 ; i++){
@@ -152,14 +154,15 @@ bool check_diagonal(int numbers[5][5]){
                 acount++;
             }
         }
-        if (mcount == 5 || acount == 5){
-            bingo = true;
-            printf("You won by diagonal \n");
-            break;
-        }
 
     }
-    return bingo;
+    if (mcount == 5){
+        diagonal++;
+    }
+    if (acount == 5){
+        diagonal++;
+    }
+    return diagonal;
 }
 
 
