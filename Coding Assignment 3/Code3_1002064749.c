@@ -4,12 +4,17 @@
 
 void fill_numbers (int numbers[5][5]);
 void print_numbers(int numbers[5][5]);
+int pick_number(int *count, int picked_number[75]);
+// void check_duplicate_pick(int picked_number[75]);
 
 int main(){
     int numbers [5][5];
+    int picked_number[75];
+    int count = 0;
     srand(time(0));
     fill_numbers(numbers);
     print_numbers(numbers);
+    check_duplicate_pick(picked_number);
 
     return 0;
 }
@@ -50,3 +55,33 @@ void print_numbers(int numbers[5][5]){
         printf("\n");
     }
 }
+
+int pick_number(int *count, int picked_number[75]){
+    int pick = rand() % 75 + 1;
+    for (int i = 0; i < *count ; i++){
+        while(pick ==picked_number[i]){
+            pick = rand() % 75 + 1;
+            i = 0;
+        }
+    }
+    picked_number[*count] = pick;
+   (*count)++;
+    return pick;
+}
+
+// void check_duplicate_pick(int picked_number[75]){
+//     int check;
+//     int count = 0;
+//     int checking[75];
+
+//     for(int i = 0 ; i < 75 ; i++){
+//         check = pick_number(&count, picked_number);
+//         checking[i] = check;
+//         printf("%d ", check);
+//         for(int j = 0 ; j < i ; j++){
+//             if(check == checking[j]){
+//                 printf("The number is duplicate\n");
+//             }
+//         }
+//     }
+// }
