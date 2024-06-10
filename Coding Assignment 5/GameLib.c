@@ -21,6 +21,7 @@ void StartGame(char ChosenPhrase[])
 		/* Call CheckPhrase with PhraseBank[i] */
 		CheckPhrase(PhraseBank[i]);
 		/* Call DashIt with PhraseBank[i] and DashPhrase */
+		DashIt(PhraseBank[i], DashPhrase );
 		printf("%d.\t%s\n", i+1, DashPhrase);
 		i++;
 	}
@@ -30,11 +31,12 @@ void StartGame(char ChosenPhrase[])
 	getchar();
 	
 	/* create a while condition that is true when Choice is less than 1 or greater than i */
+	while (Choice < 1 || Choice > i)
 	{
 		printf("You entered an invalid choice.\nPlease reenter ");
 		scanf("%d", &Choice);
 	}
-	
+	strcpy(ChosenPhrase, PhraseBank[Choice]);
 	/* copy the phrase from PhraseBank based on Choice into ChosenPhrase */ 	
 }
 
@@ -92,12 +94,21 @@ void DashIt(char *Phrase, char DashPhrase[])
 	int i = 0;
 
 	/* Put the uppercase version of Phrase into DashPhrase */
+	while(*(Phrase+i) != '\0'){
+		DashPhrase[i] = toupper(*(Phrase+i));
+		i++;
+	}
+
 
 	/* Call strpbrk() with DashPhrase and Alphabet and save the result in ReplaceIt */
+	ReplaceIt = strpbrk(DashPhrase, Alphabet);
 
 	/* while ReplaceIt is not NULL */
+	while (ReplaceIt != NULL)
 	{
 		/* Dereference ReplaceIt and set it to a dash */
+		*ReplaceIt = '-';
 		/* Call strpbrk() again */
+		ReplaceIt = strpbrk(DashPhrase, Alphabet);
 	}
 }

@@ -13,12 +13,9 @@ int main(void)
 	int i;
 	
 	/* Call StartGame and pass in Phrase */
+
 	/* Call DashIt and pass in Phrase and DashedPhrase */
 	/* uppercase Phrase */
-
-	// Checking the CheckPhrase Function
-	char check[50] ="Barun-Singh";
-	CheckPhrase(check);
 	
 	// printf("\nHere's the phrase you need to guess\n");
 
