@@ -13,6 +13,7 @@ int main(void)
 	int i;
 	
 	/* Call StartGame and pass in Phrase */
+	StartGame(Phrase);
 
 	/* Call DashIt and pass in Phrase and DashedPhrase */
 	/* uppercase Phrase */
