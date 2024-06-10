@@ -1,0 +1,5 @@
+/* Barun Singh 1002064749 */
+char *PhraseBank[] = {"Walk Like an Egyptian","Shake You Down", "I Wanna Dance with Somebody",
+                 "Nothing's Going to Stop Us Now", "C'est La Vie", "Livin' on a Prayer",
+				 "(You Gotta) Fight for Your Right (To Party)", "Sign o' the Times",
+				 "Let's Wait Awhile", "Don't Dream It's Over", ""};
