@@ -65,23 +65,28 @@ int GuessALetter(char Phrase[], char DashedPhrase[], char UpperPhrase[])
 	int FoundALetter = 0;
 	
 	/* copy UpperPhrase into UpperPhraseCopy */
+	strcpy(UpperPhraseCopy, UpperPhrase);
 		
 	printf("\n\n%s", DashedPhrase);	
 	printf("\n\nGuess a letter : ");
 	scanf(" %c", &Guess);
 	getchar();
 	/* uppercase Guess */
+	Guess = toupper(Guess);
 
 	/* Use strchr() to look for Guess in UpperPhraseCopy.  Store the result of strchr() */
 	/* in FindGuess                                                                     */
+	FindGuess = strchr(UpperPhraseCopy, Guess);
 	
 	/* while FindGuess is not NULL */
+	while(FindGuess != NULL)
 	{
 		FoundALetter = 1;
 		DashedPhrase[FindGuess - UpperPhraseCopy] = Phrase[FindGuess - UpperPhraseCopy];
 		/* Dereference FindGuess and set it to a dash */
-
+		(*FindGuess) = '-';
 		/* Call strchr() again */
+		FindGuess = strchr(UpperPhraseCopy, Guess);
 	}
 	
 	return FoundALetter;
