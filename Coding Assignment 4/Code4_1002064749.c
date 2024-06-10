@@ -14,13 +14,19 @@ int main(){
     char mark;
     char str[100];
     char* token;
+    
+    FILE *fptr = fopen("input.txt","r");
+    if (fptr == NULL){
+        printf("Unable to open file input.txt \n");
+        goto end;
+    }
 
     InitializeMap(Map, &MyMapSize);
     PrintInstructions();
     PrintMap(Map, MyMapSize);
     do{
         printf("Enter draw command (enter Q to quit) ");
-        scanf("%s", str);
+        fgets(str, 100, fptr);
         token = strtok(str, "(),");
         if(token != NULL){
             LineType = toupper(*token);
@@ -57,6 +63,7 @@ int main(){
             } else{
                 mark = 'X';
             }
+            
             // Check the starting point in inside the grid.
             if ( x > MyMapSize - 1 || y > MyMapSize -1){
                 printf("Coordinates out of range are not allowed.\n");
@@ -65,7 +72,7 @@ int main(){
 
             switch(LineType){
                 case 'V':
-                    if(y + count > MyMapSize){
+                    if(x + count > MyMapSize){
                         printf("Lines drawn last the borders are not allowed.\n");
                         continue;
                     }else{
@@ -74,7 +81,7 @@ int main(){
                     }
                     break;
                 case 'H':
-                    if(x + count > MyMapSize){
+                    if(y + count > MyMapSize){
                         printf("Lines drawn past the borders are not allowed.\n");
                         continue;
                     }else{
@@ -87,10 +94,10 @@ int main(){
                     PrintMap(Map, MyMapSize);
                     break;
             }
-
-
         }
     } while(LineType != 'Q');
+    fclose(fptr);
+    end:
 
     return 0;
 }
