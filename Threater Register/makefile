@@ -1,4 +1,4 @@
-SRC1 = Code7_1002064749.c
+SRC1 = ThreaterRegister.c
 SRC2 = BSTLib.c
 SRC3 = ListLib.c
 SRC4 = MovieTheaterLib.c

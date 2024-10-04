@@ -164,21 +164,3 @@ int check_diagonal(int numbers[5][5]){
     }
     return diagonal;
 }
-
-
-// void check_duplicate_pick(int picked_number[75]){
-//     int check;
-//     int count = 0;
-//     int checking[75];
-
-//     for(int i = 0 ; i < 75 ; i++){
-//         check = pick_number(&count, picked_number);
-//         checking[i] = check;
-//         printf("%d ", check);
-//         for(int j = 0 ; j < i ; j++){
-//             if(check == checking[j]){
-//                 printf("The number is duplicate\n");
-//             }
-//         }
-//     }
-// }

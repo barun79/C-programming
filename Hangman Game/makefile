@@ -1,7 +1,5 @@
-#Your name 1000074079 Coding Assignment 4
-
-SRC1 = Code4_1002064749.c
-SRC2 = DrawTool.c
+SRC1 = Hangman.c
+SRC2 = GameLib.c
 OBJ1 = $(SRC1:.c=.o)
 OBJ2 = $(SRC2:.c=.o)
 EXE = $(SRC1:.c=.e)
